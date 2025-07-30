@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:olx_app/adds_page.dart';
+import 'package:olx_app/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AddsPage(),
+      home: navbar(),
     );
   }
 }
