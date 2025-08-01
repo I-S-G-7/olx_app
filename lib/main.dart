@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:olx_app/main_page.dart';
+import 'package:olx_app/navbar.dart';
 
 void main() {
   runApp(const MyApp());
