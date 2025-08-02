@@ -8,29 +8,36 @@ class AccountPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF00022E),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.zero, 
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [ Stack(
-                children: [
-                  Image.asset('assets/images/olx_b.png', fit: BoxFit.cover),
-                    Positioned(
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      height: 80,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Colors.transparent, Color(0xFF00022E)],
-                          ),
-                        ),
-                      ),
+          Stack(
+            children: [
+              Image.asset(
+                'assets/images/olx_b.png',
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 130,
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: 80,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Colors.transparent, Color(0xFF00022E)],
                     ),
-                  Row(
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 16,
+                right: 16,
+                bottom: 16,
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CircleAvatar(
@@ -42,79 +49,109 @@ class AccountPage extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text("Shayan",
-                            style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white)),
+                        Text(
+                          "Shayan",
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white, 
+                          ),
+                        ),
                         SizedBox(height: 4),
-                        Text("View public profile",
-                            style: TextStyle(color: Colors.white70)),
+                        Text(
+                          "View public profile",
+                          style: TextStyle(
+                            color: Colors.white70, 
+                          ),
+                        ),
                       ],
                     ),
                     const Spacer(),
-                    Icon(Icons.notifications, color: Colors.white),
+                    Icon(
+                      Icons.notifications,
+                      color: Colors.white,
+                    ), 
                   ],
                 ),
-                ]
-              ),
-              ]
-            ),
-          ),
-      
-          const SizedBox(height: 30),
-          Row(
-            children: [
-              Expanded(
-                child: _buildOptionBox(Icons.receipt_long, "Orders"),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _buildOptionBox(Icons.favorite_border, "Favourites"),
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          Container(
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF00BFA5), Color(0xFF00695C)],
-              ),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: const [
-                Icon(Icons.local_offer, color: Colors.white),
-                SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Buy Discounted Packages",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold)),
-                      SizedBox(height: 4),
-                      Text("More Credits, More Savings.\nGrab Discounted Packages Today!",
-                          style: TextStyle(color: Colors.white70)),
+
+          const SizedBox(height: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildOptionBox(Icons.receipt_long, "Orders"),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: _buildOptionBox(
+                        Icons.favorite_border,
+                        "Favourites",
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [Color(0xFF00BFA5), Color(0xFF00695C)],
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.local_offer, color: Colors.white),
+                      SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Buy Discounted Packages",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              "More Credits, More Savings.\nGrab Discounted Packages Today!",
+                              style: TextStyle(color: Colors.white70),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Icon(Icons.chevron_right, color: Colors.white),
                     ],
                   ),
                 ),
-                Icon(Icons.chevron_right, color: Colors.white)
+                const SizedBox(height: 20),
+                _buildSettingsTile(
+                  Icons.settings,
+                  "Settings",
+                  "Privacy and manage account.",
+                ),
+                _buildSettingsTile(
+                  Icons.help_outline,
+                  "Help & Support",
+                  "Help center and legal terms.",
+                ),
+                _buildSettingsTile(Icons.logout, "Logout", ""),
               ],
             ),
           ),
-          const SizedBox(height: 20),
-          _buildSettingsTile(Icons.settings, "Settings",
-              "Privacy and manage account."),
-          _buildSettingsTile(Icons.help_outline, "Help & Support",
-              "Help center and legal terms."),
-          _buildSettingsTile(Icons.logout, "Logout", ""),
         ],
       ),
     );
   }
+
   Widget _buildOptionBox(IconData icon, String label) {
     return Container(
       decoration: BoxDecoration(
@@ -126,19 +163,26 @@ class AccountPage extends StatelessWidget {
         children: [
           Icon(icon, color: Colors.white),
           const SizedBox(height: 8),
-          Text(label,
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
   }
+
   Widget _buildSettingsTile(IconData icon, String title, String subtitle) {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 8),
       leading: Icon(icon, color: Colors.white),
       title: Text(title, style: const TextStyle(color: Colors.white)),
-      subtitle:
-          subtitle.isNotEmpty ? Text(subtitle, style: const TextStyle(color: Colors.white60)) : null,
+      subtitle: subtitle.isNotEmpty
+          ? Text(subtitle, style: const TextStyle(color: Colors.white60))
+          : null,
       trailing: const Icon(Icons.chevron_right, color: Colors.white),
       onTap: () {},
     );
