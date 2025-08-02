@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app/Selling_page.dart';
 import 'package:olx_app/accounts_page.dart';
 import 'package:olx_app/adds_page.dart';
 import 'package:olx_app/chats_page.dart';
@@ -17,7 +18,7 @@ class _navbarState extends State<navbar> {
   final List<Widget> _screens = const [
     MainPage(),
     ChatsPage(),
-    Center(child: Text("Sell", style: TextStyle(color: Colors.white))),
+    SellingPage(),
     AddsPage(),
     AccountPage(),
   ];

@@ -16,7 +16,7 @@ class AccountPage extends StatelessWidget {
                 'assets/images/olx_b.png',
                 fit: BoxFit.cover,
                 width: double.infinity,
-                height: 130,
+                height: 125,
               ),
               Positioned(
                 bottom: 0,
