@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app/accounts_page.dart';
 import 'package:olx_app/adds_page.dart';
 import 'package:olx_app/chats_page.dart';
 import 'package:olx_app/main_page.dart';
@@ -18,7 +19,7 @@ class _navbarState extends State<navbar> {
     ChatsPage(),
     Center(child: Text("Sell", style: TextStyle(color: Colors.white))),
     AddsPage(),
-    Center(child: Text("Account", style: TextStyle(color: Colors.white))),
+    AccountPage(),
   ];
 
   Widget _buildSellButtonIcon() {
@@ -101,7 +102,7 @@ class _navbarState extends State<navbar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.transparent,
       body: PersistentTabView(backgroundColor: const Color(0xFF00022E),
         controller: _controller,
         tabs: _buildTabs(),
