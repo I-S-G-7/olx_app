@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AddsPage extends StatelessWidget {
+class AddsPage extends StatefulWidget {
   const AddsPage({super.key});
+
+  @override
+  State<AddsPage> createState() => _AddsPageState();
+}
+
+class _AddsPageState extends State<AddsPage> {
+  String selected = "All"; // Track which tab is selected
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +26,112 @@ class AddsPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TextButton(
-                onPressed: () {}, // add logic
-                child: Text("All", style: TextStyle(color: Colors.white, fontSize: 20)),
+                onPressed: () {
+                  setState(() => selected = "All");
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "All",
+                      style: TextStyle(
+                        color:  Colors.white,
+                        fontSize: 20,
+                        fontWeight: selected == "All"
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                    if (selected == "All")
+                      Container(
+                        margin: EdgeInsets.only(top: 4),
+                        height: 2,
+                        width: 70,
+                        color: Colors.white,
+                      ),
+                  ],
+                ),
               ),
               TextButton(
-                onPressed: () {},
-                child: Text("Active", style: TextStyle(color: Colors.white, fontSize: 20)),
+                onPressed: () {
+                  setState(() => selected = "Active");
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Active",
+                      style: TextStyle(
+                        color:  Colors.white,
+                        fontSize: 20,
+                        fontWeight: selected == "Active"
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                    if (selected == "Active")
+                      Container(
+                        margin: EdgeInsets.only(top: 4),
+                        height: 2,
+                        width: 70,
+                        color: Colors.white,
+                      ),
+                  ],
+                ),
               ),
               TextButton(
-                onPressed: () {},
-                child: Text("Pending", style: TextStyle(color: Colors.white, fontSize: 20)),
+                onPressed: () {
+                  setState(() => selected = "Pending");
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Pending",
+                      style: TextStyle(
+                        color:  Colors.white,
+                        fontSize: 20,
+                        fontWeight: selected == "Pending"
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                    if (selected == "Pending")
+                      Container(
+                        margin: EdgeInsets.only(top: 4),
+                        height: 2,
+                        width: 70,
+                        color: Colors.white,
+                      ),
+                  ],
+                ),
               ),
               TextButton(
-                onPressed: () {},
-                child: Text("Inactive", style: TextStyle(color: Colors.white, fontSize: 20)),
+                onPressed: () {
+                  setState(() => selected = "Inactive");
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Inactive",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: selected == "Inactive"
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                    if (selected == "Inactive")
+                      Container(
+                        margin: EdgeInsets.only(top: 4),
+                        height: 2,
+                        width: 70,
+                        color: Colors.white,
+                      ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -42,7 +141,7 @@ class AddsPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.search, color: Colors.white, size: 100,),
+            Icon(Icons.search, color: Colors.white, size: 100),
             Text(
               'Oops, no results available!',
               style: TextStyle(color: Colors.white, fontSize: 20),
