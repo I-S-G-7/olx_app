@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app/profile_notification_page.dart';
+import 'package:olx_app/verify_number_screen.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -8,7 +10,7 @@ class AccountPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF00022E),
       body: ListView(
-        padding: EdgeInsets.zero, 
+        padding: EdgeInsets.zero,
         children: [
           Stack(
             children: [
@@ -54,23 +56,28 @@ class AccountPage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white, 
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(height: 4),
                         Text(
                           "View public profile",
-                          style: TextStyle(
-                            color: Colors.white70, 
-                          ),
+                          style: TextStyle(color: Colors.white70),
                         ),
                       ],
                     ),
                     const Spacer(),
-                    Icon(
-                      Icons.notifications,
-                      color: Colors.white,
-                    ), 
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const ProfileNotificationPage(),
+                          ),
+                        );
+                      },
+                      child: Icon(Icons.notifications, color: Colors.white),
+                    ),
                   ],
                 ),
               ),
@@ -106,26 +113,36 @@ class AccountPage extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.all(16),
                   child: Row(
-                    children: const [
+                    children: [
                       Icon(Icons.local_offer, color: Colors.white),
                       SizedBox(width: 12),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Buy Discounted Packages",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context, rootNavigator: true).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const VerifyNumberScreen(),
                               ),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "More Credits, More Savings.\nGrab Discounted Packages Today!",
-                              style: TextStyle(color: Colors.white70),
-                            ),
-                          ],
+                            );
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Buy Discounted Packages",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                "More Credits, More Savings.\nGrab Discounted Packages Today!",
+                                style: TextStyle(color: Colors.white70),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Icon(Icons.chevron_right, color: Colors.white),
