@@ -15,13 +15,19 @@ class navbar extends StatefulWidget {
 class _navbarState extends State<navbar> {
   final PersistentTabController _controller = PersistentTabController();
 
-  final List<Widget> _screens = const [
-    MainPage(),
-    ChatsPage(),
-    SellingPage(),
-    AddsPage(),
-    AccountPage(),
-  ];
+  late final List<Widget> _screens;
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      const MainPage(),
+      ChatsPage(controller: _controller),
+      const SellingPage(),
+      const AddsPage(),
+      const AccountPage(),
+    ];
+  }
 
   Widget _buildSellButtonIcon() {
     return Container(

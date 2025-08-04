@@ -1,223 +1,229 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class ChatsPage extends StatefulWidget {
-  const ChatsPage({super.key});
+  final PersistentTabController controller;
+  const ChatsPage({super.key, required this.controller});
 
   @override
   State<ChatsPage> createState() => _ChatsPageState();
 }
 
 class _ChatsPageState extends State<ChatsPage> {
-  String selectedTop = "All"; 
-  String selectedLower = "lowerAll"; 
-
-  final lowerAll = Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.message_rounded, color: Colors.white, size: 100),
-        const Text(
-          'No messages yet?',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const Text(
-          'Find Something you like and start a conversation',
-          style: TextStyle(color: Colors.white, fontSize: 17),
-        ),
-        const SizedBox(height: 5),
-        TextButton(
-          onPressed: () {},
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.white,
-            side: const BorderSide(color: Colors.white24),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          ),
-          child: const Text(
-            "Explore the latest ads",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-
-  final centre = Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.message_rounded, color: Colors.white, size: 100),
-        const Text(
-          'No messages yet?',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const Text(
-          'Find Something you like and start a conversation',
-          style: TextStyle(color: Colors.white, fontSize: 17),
-        ),
-        const SizedBox(height: 5),
-        TextButton(
-          onPressed: () {},
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.white,
-            side: const BorderSide(color: Colors.white24),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          ),
-          child: const Text(
-            "Explore the latest ads",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-
-  final centre2 = Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.message_rounded, color: Colors.white, size: 100),
-        const Text(
-          'No messages yet?',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const Text(
-          'We\'ll keep messages for any item you\'re selling in here',
-          style: TextStyle(color: Colors.white, fontSize: 17),
-        ),
-        const SizedBox(height: 5),
-        TextButton(
-          onPressed: () {},
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.white,
-            side: const BorderSide(color: Colors.white24),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          ),
-          child: const Text(
-            "Start Selling",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-
-  final unreadChats = Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.message_rounded, color: Colors.white, size: 100),
-        const Text(
-          'Your\'re all up to date',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const Text(
-          'You\'ve no unread chats',
-          style: TextStyle(color: Colors.white, fontSize: 17),
-        ),
-        const SizedBox(height: 5),
-        TextButton(
-          onPressed: () {},
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.white,
-            side: const BorderSide(color: Colors.white24),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          ),
-          child: const Text(
-            "Explore the latest ads",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-
-  final fvrtChats = Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.message_rounded, color: Colors.white, size: 100),
-        const Text(
-          'Your\'re all up to date',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const Text(
-          'You\'ve no favourite chats',
-          style: TextStyle(color: Colors.white, fontSize: 17),
-        ),
-        const SizedBox(height: 5),
-        TextButton(
-          onPressed: () {},
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.white,
-            side: const BorderSide(color: Colors.white24),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          ),
-          child: const Text(
-            "Explore the latest ads",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-
+  String selected = "All";
   @override
   Widget build(BuildContext context) {
+    final lowerAll = Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.message_rounded, color: Colors.white, size: 100),
+          const Text(
+            'No messages yet?',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Text(
+            'Find Something you like and start a conversation',
+            style: TextStyle(color: Colors.white, fontSize: 17),
+          ),
+          const SizedBox(height: 5),
+          TextButton(
+            onPressed: () {
+              widget.controller.jumpToTab(0);
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.white,
+              side: const BorderSide(color: Colors.white24),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            ),
+            child: const Text(
+              "Explore the latest ads",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    final centre = Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.message_rounded, color: Colors.white, size: 100),
+          const Text(
+            'No messages yet?',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Text(
+            'Find Something you like and start a conversation',
+            style: TextStyle(color: Colors.white, fontSize: 17),
+          ),
+          const SizedBox(height: 5),
+          TextButton(
+            onPressed: () {
+              widget.controller.jumpToTab(0);
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.white,
+              side: const BorderSide(color: Colors.white24),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            ),
+            child: const Text(
+              "Explore the latest ads",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    final centre2 = Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.message_rounded, color: Colors.white, size: 100),
+          const Text(
+            'No messages yet?',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Text(
+            'We\'ll keep messages for any item you\'re selling in here',
+            style: TextStyle(color: Colors.white, fontSize: 17),
+          ),
+          const SizedBox(height: 5),
+          TextButton(
+            onPressed: () {
+              widget.controller.jumpToTab(0);
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.white,
+              side: const BorderSide(color: Colors.white24),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            ),
+            child: const Text(
+              "Start Selling",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    final unreadChats = Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.message_rounded, color: Colors.white, size: 100),
+          const Text(
+            'Your\'re all up to date',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Text(
+            'You\'ve no unread chats',
+            style: TextStyle(color: Colors.white, fontSize: 17),
+          ),
+          const SizedBox(height: 5),
+          TextButton(
+            onPressed: () {
+              widget.controller.jumpToTab(0);
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.white,
+              side: const BorderSide(color: Colors.white24),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            ),
+            child: const Text(
+              "Explore the latest ads",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    final fvrtChats = Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.message_rounded, color: Colors.white, size: 100),
+          const Text(
+            'Your\'re all up to date',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Text(
+            'You\'ve no favourite chats',
+            style: TextStyle(color: Colors.white, fontSize: 17),
+          ),
+          const SizedBox(height: 5),
+          TextButton(
+            onPressed: () {
+              widget.controller.jumpToTab(0);
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.white,
+              side: const BorderSide(color: Colors.white24),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            ),
+            child: const Text(
+              "Explore the latest ads",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
     return Scaffold(
       backgroundColor: const Color(0xFF00022E),
       appBar: AppBar(
@@ -230,7 +236,7 @@ class _ChatsPageState extends State<ChatsPage> {
             children: [
               TextButton(
                 onPressed: () {
-                  setState(() => selectedTop = "All");
+                  setState(() => selected = "All");
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -240,12 +246,12 @@ class _ChatsPageState extends State<ChatsPage> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
-                        fontWeight: selectedTop == "All"
+                        fontWeight: selected == "All"
                             ? FontWeight.bold
                             : FontWeight.normal,
                       ),
                     ),
-                    if (selectedTop == "All")
+                    if (selected == "All")
                       Container(
                         margin: EdgeInsets.only(top: 4),
                         height: 2,
@@ -257,7 +263,7 @@ class _ChatsPageState extends State<ChatsPage> {
               ),
               TextButton(
                 onPressed: () {
-                  setState(() => selectedTop = "Buying");
+                  setState(() => selected = "Buying");
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -267,12 +273,12 @@ class _ChatsPageState extends State<ChatsPage> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
-                        fontWeight: selectedTop == "Buying"
+                        fontWeight: selected == "Buying"
                             ? FontWeight.bold
                             : FontWeight.normal,
                       ),
                     ),
-                    if (selectedTop == "Buying")
+                    if (selected == "Buying")
                       Container(
                         margin: EdgeInsets.only(top: 4),
                         height: 2,
@@ -284,7 +290,7 @@ class _ChatsPageState extends State<ChatsPage> {
               ),
               TextButton(
                 onPressed: () {
-                  setState(() => selectedTop = "Selling");
+                  setState(() => selected = "Selling");
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -294,12 +300,12 @@ class _ChatsPageState extends State<ChatsPage> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
-                        fontWeight: selectedTop == "Selling"
+                        fontWeight: selected == "Selling"
                             ? FontWeight.bold
                             : FontWeight.normal,
                       ),
                     ),
-                    if (selectedTop == "Selling")
+                    if (selected == "Selling")
                       Container(
                         margin: EdgeInsets.only(top: 4),
                         height: 2,
@@ -332,18 +338,12 @@ class _ChatsPageState extends State<ChatsPage> {
                   ),
                   onPressed: () {
                     setState(() {
-                      selectedLower = "lowerAll";
+                      selected = "lowerAll";
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     "All",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: selectedLower == "lowerAll"
-                          ? FontWeight.bold
-                          : FontWeight.normal,
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ),
                 Padding(
@@ -361,18 +361,12 @@ class _ChatsPageState extends State<ChatsPage> {
                     ),
                     onPressed: () {
                       setState(() {
-                        selectedLower = "Unread Chats";
+                        selected = "Unread Chats";
                       });
                     },
-                    child: Text(
+                    child: const Text(
                       "Unread Chats",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: selectedLower == "Unread Chats"
-                            ? FontWeight.bold
-                            : FontWeight.normal,
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 15),
                     ),
                   ),
                 ),
@@ -389,31 +383,25 @@ class _ChatsPageState extends State<ChatsPage> {
                   ),
                   onPressed: () {
                     setState(() {
-                      selectedLower = "Favourites";
+                      selected = "Favourites";
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     "Favourites",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: selectedLower == "Favourites"
-                          ? FontWeight.bold
-                          : FontWeight.normal,
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ),
               ],
             ),
           ),
           const SizedBox(height: 160),
-          if (selectedTop == "Selling")
+          if (selected == "Selling")
             centre2
-          else if (selectedLower == "Unread Chats")
+          else if (selected == "Unread Chats")
             unreadChats
-          else if (selectedLower == "Favourites")
+          else if (selected == "Favourites")
             fvrtChats
-          else if (selectedLower == "lowerAll")
+          else if (selected == "lowerAll")
             lowerAll
           else
             centre,
