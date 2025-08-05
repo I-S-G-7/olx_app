@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app/orders_page.dart';
 import 'package:olx_app/profile_notification_page.dart';
 import 'package:olx_app/verify_number_screen.dart';
 
@@ -92,7 +93,16 @@ class AccountPage extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: _buildOptionBox(Icons.receipt_long, "Orders"),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context, rootNavigator: true).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const OrdersPage(),
+                                ));
+                        },
+                        child: _buildOptionBox(Icons.receipt_long, "Orders"),
+                      ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(

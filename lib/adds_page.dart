@@ -135,7 +135,6 @@ class _AddsPageState extends State<AddsPage> {
           ),
         ),
       ),
-
       body: Column(
         children: [
           InkWell(
