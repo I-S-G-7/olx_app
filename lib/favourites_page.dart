@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:olx_app/verify_number_screen.dart';
 
 class FavouritesPage extends StatefulWidget {
   const FavouritesPage({super.key});

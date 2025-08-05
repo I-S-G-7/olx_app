@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:olx_app/favourites_page.dart';
+import 'package:olx_app/help&support_page.dart';
 import 'package:olx_app/orders_page.dart';
 import 'package:olx_app/profile_notification_page.dart';
 import 'package:olx_app/settings_tab.dart';
@@ -190,7 +191,13 @@ class _AccountPageState extends State<AccountPage> {
                   Icons.help_outline,
                   "Help & Support",
                   "Help center and legal terms.",
-                  null,
+                  () {
+                    Navigator.of(context, rootNavigator: true).push(
+                      MaterialPageRoute(
+                        builder: (context) => HelpsupportPage(),
+                      ),
+                    );
+                  },
                 ),
                 _buildSettingsTile(Icons.logout, "Logout", "", null),
               ],
