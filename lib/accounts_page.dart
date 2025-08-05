@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app/favourites_page.dart';
 import 'package:olx_app/orders_page.dart';
 import 'package:olx_app/profile_notification_page.dart';
+import 'package:olx_app/settings_tab.dart';
 import 'package:olx_app/verify_number_screen.dart';
 
-class AccountPage extends StatelessWidget {
+class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
 
+  @override
+  State<AccountPage> createState() => _AccountPageState();
+}
+
+class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,19 +103,28 @@ class AccountPage extends StatelessWidget {
                       child: InkWell(
                         onTap: () {
                           Navigator.of(context, rootNavigator: true).push(
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OrdersPage(),
-                                ));
+                            MaterialPageRoute(
+                              builder: (context) => const OrdersPage(),
+                            ),
+                          );
                         },
                         child: _buildOptionBox(Icons.receipt_long, "Orders"),
                       ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: _buildOptionBox(
-                        Icons.favorite_border,
-                        "Favourites",
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context, rootNavigator: true).push(
+                            MaterialPageRoute(
+                              builder: (context) => const FavouritesPage(),
+                            ),
+                          );
+                        },
+                        child: _buildOptionBox(
+                          Icons.favorite_border,
+                          "Favourites",
+                        ),
                       ),
                     ),
                   ],
@@ -164,13 +180,19 @@ class AccountPage extends StatelessWidget {
                   Icons.settings,
                   "Settings",
                   "Privacy and manage account.",
+                  () {
+                    Navigator.of(context, rootNavigator: true).push(
+                      MaterialPageRoute(builder: (context) => SettingsTab()),
+                    );
+                  },
                 ),
                 _buildSettingsTile(
                   Icons.help_outline,
                   "Help & Support",
                   "Help center and legal terms.",
+                  null,
                 ),
-                _buildSettingsTile(Icons.logout, "Logout", ""),
+                _buildSettingsTile(Icons.logout, "Logout", "", null),
               ],
             ),
           ),
@@ -202,7 +224,12 @@ class AccountPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSettingsTile(IconData icon, String title, String subtitle) {
+  Widget _buildSettingsTile(
+    IconData icon,
+    String title,
+    String subtitle,
+    void Function()? onT,
+  ) {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 8),
       leading: Icon(icon, color: Colors.white),
@@ -211,7 +238,11 @@ class AccountPage extends StatelessWidget {
           ? Text(subtitle, style: const TextStyle(color: Colors.white60))
           : null,
       trailing: const Icon(Icons.chevron_right, color: Colors.white),
-      onTap: () {},
+      onTap: () {
+        if (onT != null) {
+          onT();
+        }
+      },
     );
   }
 }
