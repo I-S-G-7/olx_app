@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app/change_password.dart';
 import 'package:olx_app/navbar.dart';
-import 'package:olx_app/verify_number_screen.dart';
 
 void main() {
   runApp(const MyApp());

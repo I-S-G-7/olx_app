@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app/change_password.dart';
 
 class ManageAccountPage extends StatelessWidget {
   const ManageAccountPage({super.key});
@@ -20,7 +21,11 @@ class ManageAccountPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildSettingsTile( "Show phone number in ads", "Hide or show your phone number in ads", true, null),
-          _buildSettingsTile("Change password", "Set new unique password", false, null),
+          _buildSettingsTile("Change password", "Set new unique password", false, (){
+            Navigator.of(context, rootNavigator: false).push(
+               MaterialPageRoute(builder: (context) => ChangePassword()),
+            );
+          }),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text("Delete Account", style: TextStyle(color: Colors.grey, decoration: TextDecoration.underline, fontWeight: FontWeight.bold),),
