@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:olx_app/change_password.dart';
 import 'package:olx_app/navbar.dart';
 
 void main() {

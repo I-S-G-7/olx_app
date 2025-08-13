@@ -27,7 +27,92 @@ class HelpsupportPage extends StatelessWidget {
             Icons.feedback,
             "Feedback",
             "Take a moment and let us know how we're doing",
-            null,
+            () {
+              showModalBottomSheet(
+                context: context,
+                backgroundColor: const Color(0xFF00022E),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                ),
+                builder: (context) {
+                  return Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 4,
+                          decoration: BoxDecoration(
+                            color: Colors.white24,
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+
+                        const Text(
+                          "Help Us Improve!",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+
+                        const Text(
+                          "Tell us what worked and what could be better we're listening",
+                          style: TextStyle(color: Colors.white60, fontSize: 15),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text("😡", style: TextStyle(fontSize: 28)),
+                            SizedBox(width: 12),
+                            Text("☹️", style: TextStyle(fontSize: 28)),
+                            SizedBox(width: 12),
+                            Text("😐", style: TextStyle(fontSize: 28)),
+                            SizedBox(width: 12),
+                            Text("🙂", style: TextStyle(fontSize: 28)),
+                            SizedBox(width: 12),
+                            Text("😍", style: TextStyle(fontSize: 28)),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(width: 8),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 120,
+                                  vertical: 12,
+                                ),
+                              ),
+                              child: const Text(
+                                "Submit Feedback",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
           ),
           _buildSettingsTile(
             Icons.person,

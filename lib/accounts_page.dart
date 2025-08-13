@@ -199,7 +199,103 @@ class _AccountPageState extends State<AccountPage> {
                     );
                   },
                 ),
-                _buildSettingsTile(Icons.logout, "Logout", "", null),
+                _buildSettingsTile(Icons.logout, "Logout", "", () {
+                  showModalBottomSheet(
+                    context: context,
+                    backgroundColor: const Color(0xFF00022E),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(16),
+                      ),
+                    ),
+                    builder: (context) {
+                      return Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 40,
+                              height: 4,
+                              decoration: BoxDecoration(
+                                color: Colors.white24,
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+
+                            const Text(
+                              "Confirm Logout",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+
+                            const Text(
+                              "You're about to log out of your account.",
+                              style: TextStyle(
+                                color: Colors.white60,
+                                fontSize: 15,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        6,
+                                      ), 
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 60,
+                                      vertical: 12,
+                                    ), 
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                  child: const Text(
+                                    "Cancel",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: Colors.black,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 60,
+                                      vertical: 12,
+                                    ), 
+                                  ),
+                                  child: const Text(
+                                    "Confirm",
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                }),
               ],
             ),
           ),
