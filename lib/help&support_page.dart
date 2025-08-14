@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:share_plus/share_plus.dart';
 class HelpsupportPage extends StatelessWidget {
   const HelpsupportPage({super.key});
 
@@ -118,7 +118,67 @@ class HelpsupportPage extends StatelessWidget {
             Icons.person,
             "Invite friends to OLX",
             "Invite your friends to buy and sell.",
-            null,
+            () {
+              showModalBottomSheet(
+                context: context,
+                backgroundColor: const Color(0xFF00022E),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                ),
+                builder: (context) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          height: 4,
+                          width: 40,
+                          margin: const EdgeInsets.only(bottom: 12),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[600],
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                        ),
+                        const Text(
+                          "Invite friends to OLX",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        const Text(
+                          "Invite your friends to buy and sell.",
+                          style: TextStyle(color: Colors.white70),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 16),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _shareOption(Icons.chat, "WhatsApp", () {
+                              Share.share(
+                                "Hey! Check out OLX: https://olx.com",
+                              );
+                            }),
+                            _shareOption(Icons.facebook, "Facebook", () {
+                              Share.share("Join me on OLX! https://olx.com");
+                            }),
+                            _shareOption(Icons.copy, "Copy Link", () {
+                              Share.share("https://olx.com");
+                            }),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
           ),
           ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: 8),
@@ -154,5 +214,22 @@ Widget _buildSettingsTile(
         onT();
       }
     },
+  );
+}
+
+Widget _shareOption(IconData icon, String label, VoidCallback onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Column(
+      children: [
+        CircleAvatar(
+          radius: 28,
+          backgroundColor: Colors.white10,
+          child: Icon(icon, size: 28, color: Colors.white),
+        ),
+        const SizedBox(height: 8),
+        Text(label, style: const TextStyle(color: Colors.white)),
+      ],
+    ),
   );
 }
