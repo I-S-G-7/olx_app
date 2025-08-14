@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:olx_app/helpCentrepage.dart';
 import 'package:share_plus/share_plus.dart';
 class HelpsupportPage extends StatelessWidget {
   const HelpsupportPage({super.key});
@@ -21,7 +22,11 @@ class HelpsupportPage extends StatelessWidget {
             Icons.help,
             "Help Centre",
             "See FAQ and contacr support.",
-            null,
+            (){
+            Navigator.of(context, rootNavigator: false).push(
+               MaterialPageRoute(builder: (context) => Helpcentrepage()),
+            );
+          },
           ),
           _buildSettingsTile(
             Icons.feedback,
