@@ -77,10 +77,45 @@ class Helpcentrepage extends StatelessWidget {
               "About Us!",
               "Here we can see contact details and what's new in #NayaOLX and our premium support",
             ),
-            SizedBox(height: 50,),
-            Text("Recent activity", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-             SizedBox(height: 50,),
-             buildHelpTile(title: "Tips for a safe transaction", linkText: "How do I Sell Safely?", commentTime: "5 Hours Ago", commentCount: 56)
+            SizedBox(height: 50),
+            Text(
+              "Recent activity",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 50),
+            buildHelpTile(
+              title: "Tips for a safe transaction",
+              linkText: "How do I Sell Safely?",
+              commentTime: "5 Hours Ago",
+              commentCount: 56,
+            ),
+            SizedBox(height: 20),
+            buildHelpTile(
+              title: "Register/Create an Account",
+              linkText: "How to create an account on OLX?",
+              commentTime: "11 Days Ago",
+              commentCount: 3,
+            ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Text("         Help"),
+                Text("      |     Terms"),
+                Text("      |     Safety"),
+                Text("      |     Contact"),
+                Text("      |     Sell"),
+              ],
+            ),
+            SizedBox(height: 20),
+             Container(
+              padding: EdgeInsets.all(10),
+              color: Colors.blue,
+               child: Row(
+                children: [
+                  Text(" OLX FREE classifieds in Pakistan - Copyright 2006 - 2025 OLX", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                ],
+                           ),
+             ),
           ],
         ),
       ),
@@ -90,10 +125,7 @@ class Helpcentrepage extends StatelessWidget {
 
 Widget buildTabTile(String title, String subtitle) {
   return Container(
-    margin: const EdgeInsets.symmetric(
-      horizontal: 16,
-      vertical: 8,
-    ), 
+    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     padding: const EdgeInsets.all(18),
     decoration: BoxDecoration(
       color: Colors.white,
@@ -123,7 +155,6 @@ Widget buildTabTile(String title, String subtitle) {
     ),
   );
 }
-
 Widget buildHelpTile({
   required String title,
   required String linkText,
@@ -150,9 +181,9 @@ Widget buildHelpTile({
                       color: Colors.black87,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 15),
                   GestureDetector(
-                    onTap: onLinkTap??(){},
+                    onTap: onLinkTap ?? () {},
                     child: Text(
                       linkText,
                       style: const TextStyle(
@@ -162,24 +193,30 @@ Widget buildHelpTile({
                       ),
                     ),
                   ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Text(
+                        "Comment added $commentTime",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.black54,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      const Icon(Icons.comment, size: 14, color: Colors.teal),
+                      const SizedBox(width: 4),
+                      Text(
+                        "$commentCount",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-            ),
-            // Right side: Comment info
-            Row(
-              children: [
-                Text(
-                  "Comment added $commentTime",
-                  style: const TextStyle(fontSize: 12, color: Colors.black54),
-                ),
-                const SizedBox(width: 6),
-                const Icon(Icons.comment, size: 16, color: Colors.teal),
-                const SizedBox(width: 2),
-                Text(
-                  "$commentCount",
-                  style: const TextStyle(fontSize: 12, color: Colors.black87),
-                ),
-              ],
             ),
           ],
         ),

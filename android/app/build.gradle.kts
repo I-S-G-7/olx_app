@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.olx_app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"   // ✅ Force correct NDK version
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
